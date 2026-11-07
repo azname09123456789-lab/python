@@ -1,0 +1,56 @@
+#رسم شکل ها
+import turtle
+t1=turtle.Turtle()
+import tkinter
+from tkinter import messagebox as msg 
+def rasm1():
+     tedadshape=int(numEntrytedadshape.get())
+     tedadzel=int(numEntrytedadzel.get())
+     andazezel=int(numEntryandazezel.get())
+     
+     for i in range(tedadshape):
+               for j in range(tedadzel):
+                      t1.forward(andazezel)
+                      t1.left(360/tedadzel)
+                                           
+                      
+                     
+
+
+def pakkardn():
+     screen1=turtle.Screen()
+     screen1.clearscreen()
+
+
+
+
+
+
+
+window=tkinter.Tk()
+window.title('رسم شکل')
+tkinter.Label(window,text='لطفا تعداد شکلی که میخواهید چاپ شود را درج نمایید ').grid (row=0,column=0)
+numEntrytedadshape=tkinter.Entry(window)
+numEntrytedadshape.grid(row=0,column=1)
+tkinter.Label(window,text='لطفا تعداد ضلع را وارد نمایید').grid(row=1,column=0)
+numEntrytedadzel=tkinter.Entry(window)
+numEntrytedadzel.grid(row=1,column=1)
+tkinter.Label(window,text='لطفا اندازه ضلع را وارد نمایید').grid(row=2,column=0)
+numEntryandazezel=tkinter.Entry(window)
+numEntryandazezel.grid(row=2,column=1)
+tkinter.Label(window,text='لطفا سرعت رسم را وارد نمایید').grid(row=3,column=0)
+numEntryspeedrasm=tkinter.Entry(window)
+numEntryspeedrasm.grid(row=3,column=1)
+
+
+
+btn1=tkinter.Button(window,text='رسم',command=rasm1)
+btn1.grid(row=4,column=0)
+btn2=tkinter.Button(window,text='پاک کردن ',command=pakkardn)
+btn2.grid(row=4,column=1)
+
+
+
+
+
+window.mainloop()

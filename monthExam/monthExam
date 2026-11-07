@@ -1,0 +1,66 @@
+import tkinter
+from tkinter import messagebox as msg
+import random
+
+class randomstring:
+    def init(self,  tol):
+        self.tol = tol
+        
+        self.reshte = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+    
+        
+        self.tolreshte = tkinter.Entry(window)
+        self.tolreshte.grid(row=0, column=1)
+        
+
+
+        
+        
+
+    def reshte_tasadofi(self):
+        
+            length = int(self.tolreshte.get())
+            
+            for i in range(self.lengh):
+                place1 = random.randint(0, len(self.reshte) - 1)
+                natije += self.reshte[place1]
+            
+        
+
+    def tolid_otomatik(self):
+        
+            length= int(self.tolreshte.get())
+            
+    
+            for _ in range(100):
+                
+                for i in range(length):
+                    place1 = random.randint(0, len(self.reshte) - 1)
+                    place += self.reshte[place1]
+        
+    
+
+window = tkinter.Tk()
+window.title('رسم شکل')  
+newRandomString =randomstring(window) 
+newRandomString.window = window    
+tkinter.Label(window, text='لطفا طول رشته را درج نمایید').grid(row=0, column=0)
+newRandomString.tolreshte.tolreshte = tkinter.Entry(window)
+newRandomString.tolreshte.grid(row=0, column=1)
+
+
+btn_tasadofi = tkinter.Button(window, text='تولید تصادفی', command=newRandomString.reshte_tasadofi)
+btn_tasadofi.grid(row=8, column=0)
+
+        
+btn1 = tkinter.Button(window, text='تولید اتوماتیک', command=newRandomString.tolid_otomatik)
+btn1.grid(row=9, column=0)
+
+        
+
+
+newRandomString = randomstring(window, 10)
+
+window.mainloop()
+

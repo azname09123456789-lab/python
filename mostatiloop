@@ -1,0 +1,44 @@
+import turtle
+class kian:
+    def __init__(self, tol, arz):
+        self.tol = tol
+        self.arz = arz
+        self.t = turtle.Turtle()
+        
+    def get_masahat(self):
+        
+        return self.tol * self.arz
+
+    def get_mohit(self):
+        
+        return  (self.tol + self.arz)*2
+
+    def draw_rectangle(self):
+        
+        print(f"رسم مستطیل: مساحت {self.get_masahat()} و محیط {self.get_mohit()}")
+        for _ in range(2):
+            self.t.forward(self.tol)
+            self.t.left(90)
+            self.t.forward(self.arz)
+            self.t.left(90)
+            
+    def run_single_shape(self):
+        
+        self.t.penup()
+        self.t.goto(0, 0) 
+        self.t.pendown()
+        self.draw_rectangle()
+        
+if __name__ == "__main__":
+        try:
+            l = float(input("لطفاً طول را وارد کنید: "))
+            w = float(input("لطف‌ها عرض را وارد کنید: "))
+
+            app = ShapeManager(l, w)
+            app.run_single_shape()
+        except ValueError:
+            print("لطفاً فقط عدد وارد کنید.")
+            
+        
+
+

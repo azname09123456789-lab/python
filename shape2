@@ -1,0 +1,172 @@
+import tkinter
+from tkinter import messagebox as msg
+import turtle
+t1=turtle.Turtle()
+from PIL import Image
+import os
+import random
+from tkinter import ttk
+screen=turtle.Screen()
+
+
+listColor=list()
+listColor=["red","green","black","blue", "brown","orange","purple","yellow","pink","gray",]
+colorIndex=random.randint(0,len(listColor)-1)
+colorIndex2=random.randint(0,len(listColor)-1)
+t1.color(listColor[colorIndex2])
+
+
+def rasm1():
+     t1.reset()
+     tedadshape=int(numEntrytedadshape.get())
+     tedadzel=int(numEntrytedadzel.get())
+     andazezel=int(numEntryandazezel.get())
+
+     speed=int(progSpeed['value'])
+     pensize=int(progSize['value'])
+     t1.pensize(pensize)
+     #t1.speed(speed)
+     t1.color(colors.get())
+     
+     step=tedadshape*tedadzel
+     baghi=300%step
+     progwork['value']=baghi
+     changeProg=300/step
+     valueProgWork=progwork['value']
+     listvalue=[]
+     for i in range(tedadshape):
+          degre=360/tedadshape
+          t1.left(degre)
+
+         
+          for j in range(tedadzel):
+                              
+               t1.forward(andazezel)
+               t1.left(360/tedadzel)
+
+               listvalue.append(valueProgWork)
+               progwork['value']=valueProgWork+changeProg
+               valueProgWork=int(progwork['value'])
+               
+
+              
+          
+     print(listvalue)
+
+
+               
+               
+                                          
+                                           
+                      
+def pakkardn():
+     screen1=turtle.Screen()
+     screen1.clearscreen()
+
+def increase_speed():
+     t1.reset()
+     speedVal=int(progSpeed['value'])
+     if speedVal<200:
+          speedVal=speedVal+10
+          progSpeed['value']=speedVal
+
+def decrease_speed():
+     t1.reset()
+     speedVal=int(progSpeed['value'])
+     if speedVal>10:
+          speedVal=speedVal-10
+          progSpeed['value']=speedVal
+def increase_size2():
+      t1.reset()
+      sizeVal=int (progSize['value'])
+      if sizeVal<200:
+           sizeVal=sizeVal+10
+           progSize['value']=sizeVal
+
+def decrease_size2():
+      t1.reset()
+      sizeVal=int (progSize['value'])
+      if sizeVal>10:
+           sizeVal=sizeVal-10
+           progSize['value']=sizeVal
+def zakhire_kardan():
+     rnd=random.randint(1000000,9999999)
+     eps_file = "temp_drawing.eps"
+     png_file = "my_drawing"+str(rnd)+".png"   
+     canvas = screen.getcanvas()
+     canvas.postscript(file=eps_file)
+     img = Image.open(eps_file)
+     img.save('image/'+png_file, "png")
+     img.close() 
+     msg.showinfo(title='نتیجه', message=f"تصویر با موفقیت در {png_file} ذخیره شد.")
+     # print(f"تصویر با موفقیت در {png_file} ذخیره شد.")
+     if os.path.exists(eps_file):
+          os.remove(eps_file)
+          
+
+     
+
+
+
+window=tkinter.Tk()
+window.title('رسم شکل')
+
+listColor=["red","green","black","blue", "brown","orange","purple","yellow","pink","gray"]
+colors=tkinter.StringVar(window)
+colors.set("انتخاب رنگ")
+colorMenu=tkinter.OptionMenu(window,colors,*listColor)
+tkinter.Label(window,text='لطفا تعداد شکلی که میخواهید چاپ شود را درج نمایید ').grid (row=0,column=0)
+numEntrytedadshape=tkinter.Entry(window)
+numEntrytedadshape.grid(row=0,column=1)
+tkinter.Label(window,text='لطفا تعداد ضلع را وارد نمایید').grid(row=1,column=0)
+numEntrytedadzel=tkinter.Entry(window)
+numEntrytedadzel.grid(row=1,column=1)
+tkinter.Label(window,text='لطفا اندازه ضلع را وارد نمایید').grid(row=2,column=0)
+numEntryandazezel=tkinter.Entry(window)
+numEntryandazezel.grid(row=2,column=1)
+#tkinter.Label(window,text='لطفا سرعت رسم را وارد نمایید').grid(row=3,column=0)
+#numEntryspeedrasm=tkinter.Entry(window)
+#numEntryspeedrasm.grid(row=3,column=1)
+#tkinter.Label(window,text='لطفا ضخامت شکل را وارد کنید ').grid(row=4,column=0)
+#numEntryzekhamat=tkinter.Entry(window)
+#numEntryzekhamat.grid(row=4,column=1)
+
+colorMenu.grid(row=5, column=2)
+
+progSpeed=ttk.Progressbar(window, orient='horizontal', length=200, mode='determinate')
+progSpeed.grid(row=6, column=0)
+incSpeed=tkinter.Button(window,text='+',command=increase_speed)
+incSpeed.grid(row=6,column=1)
+decSpeed=tkinter.Button(window,text='-',command=decrease_speed)
+decSpeed.grid(row=6,column=2)
+progSpeed['value']=0
+progSize=ttk.Progressbar(window, orient='horizontal', mode='determinate')
+progSize.grid(row=7, column=0)
+incsize=tkinter.Button(window,text='+',command=increase_size2)
+incsize.grid(row=7,column=1)
+decsize=tkinter.Button(window,text='-',command=decrease_size2)
+decsize.grid(row=7,column=2)
+progSize['value']=10
+progwork=ttk.Progressbar(window, length=300, orient='horizontal',  mode='determinate')
+progwork.grid(row=8, column=0)
+progwork['value']=0
+progwork['maximum']=300
+
+
+
+
+btn1=tkinter.Button(window,text='رسم',command=rasm1)
+btn1.grid(row=9,column=0)
+btn2=tkinter.Button(window,text='پاک کردن ',command=pakkardn)
+btn2.grid(row=9,column=1)
+
+btn3=tkinter.Button(window,text='ذخیره',command=zakhire_kardan)
+btn3.grid(row=9,column=2)
+
+
+
+
+
+
+
+window.mainloop()

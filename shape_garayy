@@ -1,0 +1,27 @@
+class Book:
+    def __init__(self, name, author, language, pages):
+        self.book_name = name
+        self.book_author = author
+        self.book_language = language
+        self.book_pages = pages
+
+    def return_name(self):
+        print(f'the book name is {self.book_name}')
+        print(f'the book author is {self.book_author}')
+        print(f'the book language is {self.book_language}')
+        print(f'the book pages is {self.book_pages}')
+    def add_book(self,name, author, language, pages):
+        self.book_name = name
+        self.book_author = author
+        self.book_language = language
+        self.book_pages = pages
+         
+        
+        
+
+newClass = Book('khaterat_kiyan', 'kiyan', 'kurdish', 154)
+newClass.add_book('gg','hh','jkjk',90)
+newClass.return_name()
+newClass.add_book('gg','hh','jkjk',90)
+
+    
